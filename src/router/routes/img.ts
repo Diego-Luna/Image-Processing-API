@@ -9,35 +9,62 @@ imgURLS.get('/1', imgReview, (req, res) => {
 
   const { size } = req.query;
 
-  if (size == undefined || size != "original") {
+  console.log("size :" + size);
+
+  if (size !== undefined && size !== "original") {
     res.writeHead(200, { 'content-type': 'image/jpg' });
-    fs.createReadStream(path + '1/'+ size +'_img.jpg').pipe(res);
+    fs.createReadStream(path + '1/' + size + '_img.jpg').pipe(res);
   } else {
     res.writeHead(200, { 'content-type': 'image/jpg' });
     fs.createReadStream(path + '1/img.jpg').pipe(res);
   }
 
-
 });
 
 imgURLS.get('/2', imgReview, (req, res) => {
-  res.writeHead(200, { 'content-type': 'image/jpg' });
-  fs.createReadStream(path + '2/img.jpg').pipe(res);
+
+  const { size } = req.query;
+  if (size !== undefined && size !== "original") {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '2/' + size + '_img.jpg').pipe(res);
+  } else {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '2/img.jpg').pipe(res);
+  }
+
 });
 
 imgURLS.get('/3', imgReview, (req, res) => {
-  res.writeHead(200, { 'content-type': 'image/jpg' });
-  fs.createReadStream(path + '3/img.jpg').pipe(res);
+  const { size } = req.query;
+  if (size !== undefined && size !== "original") {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '3/' + size + '_img.jpg').pipe(res);
+  } else {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '3/img.jpg').pipe(res);
+  }
 });
 
 imgURLS.get('/4', imgReview, (req, res) => {
-  res.writeHead(200, { 'content-type': 'image/jpg' });
-  fs.createReadStream(path + '4/img.jpg').pipe(res);
+  const { size } = req.query;
+  if (size !== undefined && size !== "original") {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '4/' + size + '_img.jpg').pipe(res);
+  } else {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '4/img.jpg').pipe(res);
+  }
 });
 
 imgURLS.get('/5', imgReview, (req, res) => {
-  res.writeHead(200, { 'content-type': 'image/jpg' });
-  fs.createReadStream(path + '5/img.jpg').pipe(res);
+  const { size } = req.query;
+  if (size !== undefined && size !== "original") {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '5/' + size + '_img.jpg').pipe(res);
+  } else {
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(path + '5/img.jpg').pipe(res);
+  }
 });
 
 
