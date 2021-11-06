@@ -7,8 +7,8 @@
     "build": "npx tsc",
     "start": "nodemon src/index.ts",
     "jasmine": "jasmine",
-    "lint": "eslint 'src/index.ts'",
-    "prettier": "prettier --config .prettierrc 'src/*.ts' --write",
+    "lint": "eslint src/ --fix",
+    "prettier": "prettier --write '{*.ts,src/**/*.{ts}}' ",
     "format": "npm run prettier && npm run lint"
   },
   "repository": {
