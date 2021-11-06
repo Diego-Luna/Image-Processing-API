@@ -7,6 +7,6 @@ routes.get('/', (req, res) => {
   res.send('Hello, world!');
 });
 
-routes.use('/api/imgs',imgURLS);
+routes.use('/api/imgs', imgURLS);
 
 export default routes;
