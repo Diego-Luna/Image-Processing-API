@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import express from 'express';
 const request = require('request');
 
 import fs from 'fs';
 
-const imgs_prosesing = './imgs_prosesing';
-const imgs = './imgs';
+const imgs_prosesing = 'img_folders/imgs_prosesing';
+const imgs = 'img_folders/imgs';
 
 const imgsURLS: string[] = [
   'https://raw.githubusercontent.com/udacity/nd-0067-c1-building-a-server-project-starter/master/images/encenadaport.jpg',
@@ -24,17 +23,11 @@ const createFolders = (
   res: express.Response,
   next: Function
 ): void => {
-  // const url: string = req.url;
-
   if (fs.existsSync(imgs_prosesing) || fs.existsSync(imgs)) {
-    console.log('existen las carpetas');
-
     next();
   } else {
     if (!fs.existsSync(imgs_prosesing)) {
       fs.mkdirSync(imgs_prosesing);
-
-      console.log('creando /imgs_prosesing');
     }
     if (!fs.existsSync(imgs)) {
       try {
@@ -54,9 +47,6 @@ const createFolders = (
               res: { headers: { [x: string]: never } },
               body: never
             ): void {
-              console.log('content-type:', res.headers['content-type']);
-              console.log('content-length:', res.headers['content-length']);
-
               request(imgsURLS[i])
                 .pipe(fs.createWriteStream(`${imgs}/${iNumber}/img.jpg`))
                 .on('close', () => {});
@@ -65,16 +55,9 @@ const createFolders = (
         }
         next();
       } catch (error) {
-        console.log('Error download: ' + error);
         next();
       }
-
-      console.log('creando /imgs');
     }
-
-    console.log('estamos en el else');
-
-    // next();
   }
 };
 

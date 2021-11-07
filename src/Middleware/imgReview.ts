@@ -3,8 +3,7 @@ import express from 'express';
 import sharp from 'sharp';
 import fs from 'fs';
 
-// const paht = 'src/imgs/';
-const paht = './imgs/';
+const paht = 'img_folders/imgs/';
 
 const imgReview = (
   req: express.Request,

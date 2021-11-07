@@ -4,8 +4,7 @@ import createFolders from '../../Middleware/createFolders';
 import fs from 'fs';
 
 const imgURLS = express.Router();
-// const path = 'src/imgs/';
-const path = './imgs/';
+const path = 'img_folders/imgs/';
 
 imgURLS.get('/', createFolders, imgReview, (req, res) => {
   const movies = [
