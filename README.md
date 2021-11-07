@@ -4,13 +4,13 @@ This project aims to give you a real-world scenario in which you would read and 
 
 I made a backend application that meets both challenges, plus if you don't have the images or folders, download them from the internet:
 
-- It gives us a jason with the information of 5 images in a small, medium, recorded and original format
+- It gives us a jason with the information of 5 images in a small, medium, big and original format
 
 ```
 http://localhost:3000/api/imgs/static
 ```
 
-- An EndPoint where you can request any of the 4 images in custom dimensions
+- An EndPoint where you can request any of the 5 images in custom dimensions
 
 ```
 http://localhost:3000/api/imgs/dinamic?filename=1&width=200&height=200
@@ -46,15 +46,15 @@ npm run build
 
 ### Middleware
 
-En la carpeta Middleware creo 2 archivos para el manejo de las potos y carpetas:
+In the Middleware folder I create 2 files for managing the potos and folders:
 
 - **createFolders.ts**
 
-Se encarga de revisar que esten las carptetas adonde vivira nuestras imagenes existan, y si no estasn las crea y descarga las 5 imagenes del repositorio de Udacity en [github](https://github.com/udacity/nd-0067-c1-building-a-server-project-starter/tree/master/images).
+It is in charge of checking that the folders where our images will live exist, and if they are not, it creates them and downloads the 5 images from the Udacity repository in [github](https://github.com/udacity/nd-0067-c1-building-a-server-project-starter/tree/master/images).
 
-Para la verificar y creacion de las carpetas uso el modulos [fs](https://nodejs.org/docs/latest-v14.x/api/fs.html).
+To verify and create the folders I use the modules [fs](https://nodejs.org/docs/latest-v14.x/api/fs.html).
 
-Ejmplo (linea 7 y 28 ):
+Example (line 7 and 28):
 
 ```js
 import fs from 'fs';
@@ -64,9 +64,9 @@ if (!fs.existsSync(imgs_prosesing)) {
 }
 ```
 
-Para la descarga de las imagnes uso el modulo [request](https://www.npmjs.com/package/request) y con su [@type/request](https://www.npmjs.com/package/@types/request) para poder usaro con TS.
+To download the images I use the module [request](https://www.npmjs.com/package/request) and with his [@type/request](https://www.npmjs.com/package/@types/request) to be able to use it with TS.
 
-Ejemplo (linea 5 y 42-46 ):
+Example (line 5 and 42-46):
 
 ```js
 import request from 'request';
@@ -83,11 +83,11 @@ for (let i = 0; i <= imgsURLS.length; i++) {
 
 - **imgReview.ts** ->
 
-Se encarga de revisar que el parametro de size, y los tamaños se acoloque bien y de tener las imagenes listas en su respectiva carpeta.
+It is responsible for checking that the size parameter, and the sizes are well placed and having the images ready in their respective folder.
 
-Para la verificar que existe la imagen use el modulo[fs](https://nodejs.org/docs/latest-v14.x/api/fs.html).
+To verify that the image exists use the module [fs](https://nodejs.org/docs/latest-v14.x/api/fs.html).
 
-Ejmplo (linea 4 y 22 ):
+Example (line 4 and 22):
 
 ```js
 import fs from 'fs';
@@ -95,9 +95,9 @@ import fs from 'fs';
 fs.existsSync(paht + urlSmall + '/small_img.jpg');
 ```
 
-Para cambiar la dimension de la imagen uso el modulo [sharp](https://www.npmjs.com/package/sharp) y con su [@types/sharp](https://www.npmjs.com/package/@types/sharp) para poder usaro con TS.
+To change the dimension of the image you used the module [sharp](https://www.npmjs.com/package/sharp) and with his [@types/sharp](https://www.npmjs.com/package/@types/sharp) to be able to use it with TS.
 
-Ejemplo (linea 3 y 25-33 ):
+Example (line 3 and 25-33):
 
 ```js
 import sharp from 'sharp';
@@ -115,41 +115,45 @@ sharp(paht + urlSmall + '/img.jpg')
 
 ### Routes
 
-La ruta de /api/imgs/static, re gresa un Json adonde esta la informacion de las 4 imagenes con los tamaños (pequeño, mediano, grande y original ):
+The path of / api / imgs / static ,, returns a Json where is the information of the 4 images with the sizes (small, medium, large and original):
 
-- el archivo se llama: static_img.ts
+- the file is called: **static_img.ts**
 
 ```
 http://localhost:3000/api/imgs/static
 ```
 
-Para acceder a la image con el tamaño cambiamos el "size" port el que queremos:
+To access the image with the size we change the "size" port to the one we want:
 
 ```
 http://localhost:3000/api/imgs/static/1?size=small
 ```
 
-Esto es gracias a los Middlewares que me ayudan a manejar las imagenes y los parametros.
+This is thanks to the Middlewares that help me to manage the images and the parameters.
 
 ### Test
 
-Los archivos de las pruebas los encontramos en la carpeta: test -> Routes -> static y tambien el indexSpec.ts.
+The test files are found in the folder: `test -> Routes -> static` and also the `indexSpec.ts.`
 
-Estos archivos se encargan de verigficar el tamaño de dara imagen con los direfentes tamaños y el Json.
+These files are in charge of verifying the size of the image with the different sizes and the Json.
 
 ## Challenge 2 Documentation /createFolders, haveImg
 
 ### Middleware
 
-En la carpeta Middleware creo 2 archivos para el manejo de las potos y carpetas:
+In the Middleware folder I create 2 files for managing the potos and folders:
 
 - **createFolders.ts**
 
-Se encarga de revisar que esten las carptetas adonde vivira nuestras imagenes existan, y si no estasn las crea y descarga las 5 imagenes del repositorio de Udacity en [github](https://github.com/udacity/nd-0067-c1-building-a-server-project-starter/tree/master/images).
+It is in charge of checking that the folders where our images will live exist, and if they are not, it creates and downloads the 5 images from the Udacity repository in [github](https://github.com/udacity/nd-0067-c1-building-a-server-project-starter/tree/master/images).
 
-Para la verificar la existencia de las imagenes uso el modulos [fs](https://nodejs.org/docs/latest-v14.x/api/fs.html).
+- **haveImg.ts** ->
 
-Ejmplo (linea 31-61 ):
+It is in charge of checking that the parameter that the user sends to the endpoint such as the filename, width, height, and of checking if there is already a customized image along with the requested dimensions, in the event that it fulfills everything, it is sent to the user the image and if it is not deleted and continue with the code.
+
+To verify that the image exists I use the modules [fs](https://nodejs.org/docs/latest-v14.x/api/fs.html).To review the dimensions and create the images you used the module [sharp](https://www.npmjs.com/package/sharp) and with his [@types/sharp](https://www.npmjs.com/package/@types/sharp)
+
+Example (line 31-61):
 
 ```js
 if (fs.existsSync(dinamicUrl)) {
@@ -183,75 +187,24 @@ if (fs.existsSync(dinamicUrl)) {
 }
 ```
 
-Para la descarga de las imagnes uso el modulo [request](https://www.npmjs.com/package/request) y con su [@type/request](https://www.npmjs.com/package/@types/request) para poder usaro con TS.
-
-Ejemplo (linea 5 y 42-46 ):
-
-```js
-import request from 'request';
-
-for (let i = 0; i <= imgsURLS.length; i++) {
-  const iNumber: number = i + 1;
-  request.head(imgsURLS[i], function (err, res, body) {
-    request(imgsURLS[i])
-      .pipe(fs.createWriteStream(`${imgs}/${iNumber}/img.jpg`))
-      .on('close', () => {});
-  });
-}
-```
-
-- **haveImg.ts** ->
-
-Se encarga de revisar que el parametro que manda el usuario al endpoint como el filename, width, height, y de comprobar si ya hay una imagen personalisada junto con con las dimensiones que se piden, en el caso de que cumpla todo se manda al usuario la imagen y si no se elimina y se sigue con el codigo.
-
-Para la verificar que existe la imagen use el modulo[fs](https://nodejs.org/docs/latest-v14.x/api/fs.html)
-
-Ejmplo (linea 4 y 22 ):
-
-```js
-import fs from 'fs';
-
-fs.existsSync(paht + urlSmall + '/small_img.jpg');
-```
-
-Para cambiar la dimension de la imagen uso el modulo [sharp](https://www.npmjs.com/package/sharp) y con su [@types/sharp](https://www.npmjs.com/package/@types/sharp) para poder usaro con TS.
-
-Ejemplo (linea 3 y 25-33 ):
-
-```js
-import sharp from 'sharp';
-
-sharp(paht + urlSmall + '/img.jpg')
-  .resize(480, 318)
-  .toFile(paht + urlSmall + '/small_img.jpg', function (err) {
-    if (err) {
-      res.status(400).send('wrong syntax : ' + url);
-    }
-
-    next();
-  });
-```
-
 ### Routes
 
-La ruta de /api/imgs/static, re gresa un Json adonde esta la informacion de las 4 imagenes con los tamaños (pequeño, mediano, grande y original ):
+The path of `/api/imgs/dinamic?filename=1&width=200&height=200`, return the image you select (from 1 to 5), with the necessary dimensionsfor the project.
 
-- el archivo se llama: static_img.ts
-
-```
-http://localhost:3000/api/imgs/static
-```
-
-Para acceder a la image con el tamaño cambiamos el "size" port el que queremos:
+- the file is called: **dinamic_img.ts**
 
 ```
-http://localhost:3000/api/imgs/static/1?size=small
+http://localhost:3000/api/imgs/dinamic?filename=1&width=200&height=200
 ```
 
-Esto es gracias a los Middlewares que me ayudan a manejar las imagenes y los parametros.
+```
+http://localhost:3000/api/imgs/dinamic?filename=2&width=1000&height=500
+```
+
+This is thanks to the Middlewares that help me to manage the images and the parameters.
 
 ### Test
 
-Los archivos de las pruebas los encontramos en la carpeta: test -> Routes -> static y tambien el indexSpec.ts.
+The test files are found in the folder: `test -> Routes -> dinamic.`
 
-Estos archivos se encargan de verigficar el tamaño de dara imagen con los direfentes tamaños y el Json.
+These files are in charge of verifying the creation of the 5 images with different dimensions.
