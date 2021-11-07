@@ -126,7 +126,31 @@ http://localhost:3000/api/imgs/static
 To access the image with the size we change the "size" port to the one we want:
 
 ```
+http://localhost:3000/api/imgs/static/1
 http://localhost:3000/api/imgs/static/1?size=small
+http://localhost:3000/api/imgs/static/1?size=medium
+http://localhost:3000/api/imgs/static/1?size=big
+
+http://localhost:3000/api/imgs/static/2
+http://localhost:3000/api/imgs/static/2?size=small
+http://localhost:3000/api/imgs/static/2?size=medium
+http://localhost:3000/api/imgs/static/2?size=big
+
+http://localhost:3000/api/imgs/static/3
+http://localhost:3000/api/imgs/static/3?size=small
+http://localhost:3000/api/imgs/static/3?size=medium
+http://localhost:3000/api/imgs/static/3?size=big
+
+http://localhost:3000/api/imgs/static/4
+http://localhost:3000/api/imgs/static/4?size=small
+http://localhost:3000/api/imgs/static/4?size=medium
+http://localhost:3000/api/imgs/static/4?size=big
+
+http://localhost:3000/api/imgs/static/5
+http://localhost:3000/api/imgs/static/5?size=small
+http://localhost:3000/api/imgs/static/5?size=medium
+http://localhost:3000/api/imgs/static/5?size=big
+
 ```
 
 This is thanks to the Middlewares that help me to manage the images and the parameters.
@@ -195,10 +219,14 @@ The path of `/api/imgs/dinamic?filename=1&width=200&height=200`, return the imag
 
 ```
 http://localhost:3000/api/imgs/dinamic?filename=1&width=200&height=200
-```
 
-```
-http://localhost:3000/api/imgs/dinamic?filename=2&width=1000&height=500
+http://localhost:3000/api/imgs/dinamic?filename=2&width=500&height=200
+
+http://localhost:3000/api/imgs/dinamic?filename=3&width=1000&height=500
+
+http://localhost:3000/api/imgs/dinamic?filename=4&width=500&height=1000
+
+http://localhost:3000/api/imgs/dinamic?filename=5&width=600&height=200
 ```
 
 This is thanks to the Middlewares that help me to manage the images and the parameters.
