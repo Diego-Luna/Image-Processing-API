@@ -21,7 +21,7 @@ http://localhost:3000/api/imgs/dinamic?filename=1&width=200&height=200
 - Install dependencies _(use node V14.17)_:
 
 ```
-npm i
+npm install
 ```
 
 - Development command:
@@ -81,7 +81,7 @@ for (let i = 0; i <= imgsURLS.length; i++) {
 }
 ```
 
-- **imgReview.ts** ->
+- **imgReview.ts**
 
 It is responsible for checking that the size parameter, and the sizes are well placed and having the images ready in their respective folder.
 
@@ -137,7 +137,7 @@ The test files are found in the folder: `test -> Routes -> static` and also the 
 
 These files are in charge of verifying the size of the image with the different sizes and the Json.
 
-## Challenge 2 Documentation /createFolders, haveImg
+## Challenge 2 Documentation
 
 ### Middleware
 
@@ -147,7 +147,7 @@ In the Middleware folder I create 2 files for managing the potos and folders:
 
 It is in charge of checking that the folders where our images will live exist, and if they are not, it creates and downloads the 5 images from the Udacity repository in [github](https://github.com/udacity/nd-0067-c1-building-a-server-project-starter/tree/master/images).
 
-- **haveImg.ts** ->
+- **haveImg.ts**
 
 It is in charge of checking that the parameter that the user sends to the endpoint such as the filename, width, height, and of checking if there is already a customized image along with the requested dimensions, in the event that it fulfills everything, it is sent to the user the image and if it is not deleted and continue with the code.
 
