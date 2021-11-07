@@ -9,38 +9,38 @@ imgURLS.get('/', imgReview, (req, res) => {
   const movies = [
     {
       name: 'image 1',
-      img_original: '/api/imgs/1',
-      img_small: '/api/imgs/1?size=small',
-      img_medium: '/api/imgs/1?size=medium',
-      img_big: '/api/imgs/1?size=big'
+      img_original: '/api/imgs/static/1',
+      img_small: '/api/imgs/static/1?size=small',
+      img_medium: '/api/imgs/static/1?size=medium',
+      img_big: '/api/imgs/static/1?size=big'
     },
     {
       name: 'image 2',
-      img_original: '/api/imgs/2',
-      img_small: '/api/imgs/2?size=small',
-      img_medium: '/api/imgs/2?size=medium',
-      img_big: '/api/imgs/2?size=big'
+      img_original: '/api/imgs/static/2',
+      img_small: '/api/imgs/static/2?size=small',
+      img_medium: '/api/imgs/static/2?size=medium',
+      img_big: '/api/imgs/static/2?size=big'
     },
     {
       name: 'image 3',
-      img_original: '/api/imgs/3',
-      img_small: '/api/imgs/3?size=small',
-      img_medium: '/api/imgs/3?size=medium',
-      img_big: '/api/imgs/3?size=big'
+      img_original: '/api/imgs/static/3',
+      img_small: '/api/imgs/static/3?size=small',
+      img_medium: '/api/imgs/static/3?size=medium',
+      img_big: '/api/imgs/static/3?size=big'
     },
     {
       name: 'image 4',
-      img_original: '/api/imgs/4',
-      img_small: '/api/imgs/4?size=small',
-      img_medium: '/api/imgs/4?size=medium',
-      img_big: '/api/imgs/4?size=big'
+      img_original: '/api/imgs/static/4',
+      img_small: '/api/imgs/static/4?size=small',
+      img_medium: '/api/imgs/static/4?size=medium',
+      img_big: '/api/imgs/static/4?size=big'
     },
     {
       name: 'image 5',
-      img_original: '/api/imgs/5',
-      img_small: '/api/imgs/5?size=small',
-      img_medium: '/api/imgs/5?size=medium',
-      img_big: '/api/imgs/5?size=big'
+      img_original: '/api/imgs/static/5',
+      img_small: '/api/imgs/static/5?size=small',
+      img_medium: '/api/imgs/static/5?size=medium',
+      img_big: '/api/imgs/static/5?size=big'
     }
   ];
 
@@ -106,7 +106,7 @@ imgURLS.get('/5', imgReview, (req, res) => {
 });
 
 imgURLS.get('*', (req, res) => {
-  res.redirect('/api/imgs');
+  res.redirect('/api/imgs/static');
 });
 
 export default imgURLS;

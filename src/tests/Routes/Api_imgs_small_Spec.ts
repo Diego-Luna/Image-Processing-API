@@ -2,9 +2,9 @@ import supertest from 'supertest';
 import app from '../../index';
 
 describe('Route api/img/ size small', () => {
-  it('get API /api/imgs/1 size', (done) => {
+  it('get API /api/imgs/static/1 size', (done) => {
     supertest(app)
-      .get('/api/imgs/1?size=small')
+      .get('/api/imgs/static/1?size=small')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
@@ -14,9 +14,9 @@ describe('Route api/img/ size small', () => {
       .expect(200, { img: 30051 }, done);
   });
 
-  it('get API /api/imgs/2 size', (done) => {
+  it('get API /api/imgs/static/2 size', (done) => {
     supertest(app)
-      .get('/api/imgs/2?size=small')
+      .get('/api/imgs/static/2?size=small')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
@@ -26,9 +26,9 @@ describe('Route api/img/ size small', () => {
       .expect(200, { img: 26562 }, done);
   });
 
-  it('get API /api/imgs/3 size', (done) => {
+  it('get API /api/imgs/static/3 size', (done) => {
     supertest(app)
-      .get('/api/imgs/3?size=small')
+      .get('/api/imgs/static/3?size=small')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
@@ -38,9 +38,9 @@ describe('Route api/img/ size small', () => {
       .expect(200, { img: 19369 }, done);
   });
 
-  it('get API /api/imgs/4 size', (done) => {
+  it('get API /api/imgs/static/4 size', (done) => {
     supertest(app)
-      .get('/api/imgs/4?size=small')
+      .get('/api/imgs/static/4?size=small')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
@@ -50,9 +50,9 @@ describe('Route api/img/ size small', () => {
       .expect(200, { img: 52921 }, done);
   });
 
-  it('get API /api/imgs/5 size', (done) => {
+  it('get API /api/imgs/static/5 size', (done) => {
     supertest(app)
-      .get('/api/imgs/5?size=small')
+      .get('/api/imgs/static/5?size=small')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
