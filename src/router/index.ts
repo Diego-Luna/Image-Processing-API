@@ -12,7 +12,7 @@ routes.use('/api/imgs/static', imgStaticURLS);
 routes.use('/api/imgs/dinamic', imgDinamicURLS);
 
 routes.get('*', (req, res) => {
-  res.redirect('/api/imgs');
+  res.redirect('/api/imgs/static');
 });
 
 export default routes;

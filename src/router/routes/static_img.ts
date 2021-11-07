@@ -107,7 +107,8 @@ imgURLS.get('/5', createFolders, imgReview, (req, res) => {
 });
 
 imgURLS.get('*', (req, res) => {
-  res.redirect('/api/imgs/static');
+  // res.redirect('/api/imgs/static');
+  res.status(400).send('wrong syntax');
 });
 
 export default imgURLS;

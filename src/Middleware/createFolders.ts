@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-var-requires */
 import express from 'express';
-const request = require('request');
+import request from 'request';
 
 import fs from 'fs';
 
@@ -40,22 +39,15 @@ const createFolders = (
 
         for (let i = 0; i <= imgsURLS.length; i++) {
           const iNumber: number = i + 1;
-          request.head(
-            imgsURLS[i],
-            function (
-              err: never,
-              res: { headers: { [x: string]: never } },
-              body: never
-            ): void {
-              request(imgsURLS[i])
-                .pipe(fs.createWriteStream(`${imgs}/${iNumber}/img.jpg`))
-                .on('close', () => {});
-            }
-          );
+          request.head(imgsURLS[i], function (err, res, body) {
+            request(imgsURLS[i])
+              .pipe(fs.createWriteStream(`${imgs}/${iNumber}/img.jpg`))
+              .on('close', () => {});
+          });
         }
         next();
       } catch (error) {
-        next();
+        res.status(500).send('Error downloading images, try another time');
       }
     }
   }

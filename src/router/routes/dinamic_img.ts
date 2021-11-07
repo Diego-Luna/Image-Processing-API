@@ -23,7 +23,7 @@ imgURLS.get('/', createFolders, haveImg, (req, res) => {
     .resize(widthNumber, heightNumber)
     .toFile(urlEnd, function (err) {
       if (err) {
-        res.status(400).send('wrong syntax end: ' + url);
+        res.status(400).send('wrong syntax: ' + url);
       } else {
         res.writeHead(200, { 'content-type': 'image/jpg' });
         fs.createReadStream(urlEnd).pipe(res);

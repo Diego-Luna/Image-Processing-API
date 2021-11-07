@@ -49,21 +49,23 @@ const imgReview = (
                   next();
                 })
                 .catch(() => {
-                  res.status(400).send('wrong syntax 4: ');
+                  res.status(500).send('Error in processing the img');
                 });
             }
           })
-          .catch((error) => {
-            res.status(400).send('wrong syntax 3: ' + error);
+          .catch(() => {
+            res
+              .status(500)
+              .send('Error checking image dimensions, try another time');
           });
       } else {
         next();
       }
     } else {
-      res.status(400).send('wrong syntax 2: ' + url);
+      res.status(400).send('Error in filename: ' + url);
     }
   } else {
-    res.status(400).send('wrong syntax 1: ' + url);
+    res.status(400).send('wrong syntax: ' + url);
   }
 };
 
