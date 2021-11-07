@@ -45,8 +45,8 @@ imgURLS.get('/', imgReview, (req, res) => {
   ];
 
   res.status(200).json({
-    data: movies, // los datos son lo que declaramos antes
-    message: 'images listed' // Y los mensages para el cliente
+    data: movies,
+    message: 'images listed'
   });
 });
 imgURLS.get('/1', imgReview, (req, res) => {
@@ -105,7 +105,7 @@ imgURLS.get('/5', imgReview, (req, res) => {
   }
 });
 
-imgURLS.get('*', imgReview, (req, res) => {
+imgURLS.get('*', (req, res) => {
   res.redirect('/api/imgs');
 });
 
