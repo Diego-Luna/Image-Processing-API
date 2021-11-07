@@ -5,7 +5,9 @@ import imgDinamicURLS from './routes/dinamic_img';
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-  res.status(200).send('Hello, to the image processing-api!');
+  res
+    .status(200)
+    .send('Hello, to the image processing-api! by Diego Francisco Luna Lopez');
 });
 
 routes.use('/api/imgs/static', imgStaticURLS);
