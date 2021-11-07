@@ -3,9 +3,11 @@
 import express from 'express';
 import sharp from 'sharp';
 import fs from 'fs';
+// import Path from 'path';
 const fsPromises = require('fs').promises;
 
-const paht = 'src/imgs_prosesing/';
+// const paht = 'src/imgs_prosesing/';
+const paht = './imgs_prosesing/';
 
 const imgReview = (
   req: express.Request,

@@ -1,14 +1,17 @@
 import express from 'express';
 import haveImg from '../../Middleware/haveImg';
+import createFolders from '../../Middleware/createFolders';
 import sharp from 'sharp';
 import fs from 'fs';
 
 const imgURLS = express.Router();
 
-const pahtEnd = 'src/imgs_prosesing/';
-const pahtStart = 'src/imgs/';
+// const pahtEnd = 'src/imgs_prosesing/';
+// const pahtStart = 'src/imgs/';
+const pahtEnd = './imgs_prosesing/';
+const pahtStart = './imgs/';
 
-imgURLS.get('/', haveImg, (req, res) => {
+imgURLS.get('/', createFolders, haveImg, (req, res) => {
   const { filename, width, height } = req.query;
   const urlEnd: string = pahtEnd + filename + '.jpg';
   const urlStart: string = pahtStart + filename + '/img.jpg';

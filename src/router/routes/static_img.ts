@@ -1,11 +1,13 @@
 import express from 'express';
 import imgReview from '../../Middleware/imgReview';
+import createFolders from '../../Middleware/createFolders';
 import fs from 'fs';
 
 const imgURLS = express.Router();
-const path = 'src/imgs/';
+// const path = 'src/imgs/';
+const path = './imgs/';
 
-imgURLS.get('/', imgReview, (req, res) => {
+imgURLS.get('/', createFolders, imgReview, (req, res) => {
   const movies = [
     {
       name: 'image 1',
@@ -49,7 +51,7 @@ imgURLS.get('/', imgReview, (req, res) => {
     message: 'images listed'
   });
 });
-imgURLS.get('/1', imgReview, (req, res) => {
+imgURLS.get('/1', createFolders, imgReview, (req, res) => {
   const { size } = req.query;
 
   if (size !== undefined && size !== 'original') {
@@ -61,7 +63,7 @@ imgURLS.get('/1', imgReview, (req, res) => {
   }
 });
 
-imgURLS.get('/2', imgReview, (req, res) => {
+imgURLS.get('/2', createFolders, imgReview, (req, res) => {
   const { size } = req.query;
   if (size !== undefined && size !== 'original') {
     res.writeHead(200, { 'content-type': 'image/jpg' });
@@ -72,7 +74,7 @@ imgURLS.get('/2', imgReview, (req, res) => {
   }
 });
 
-imgURLS.get('/3', imgReview, (req, res) => {
+imgURLS.get('/3', createFolders, imgReview, (req, res) => {
   const { size } = req.query;
   if (size !== undefined && size !== 'original') {
     res.writeHead(200, { 'content-type': 'image/jpg' });
@@ -83,7 +85,7 @@ imgURLS.get('/3', imgReview, (req, res) => {
   }
 });
 
-imgURLS.get('/4', imgReview, (req, res) => {
+imgURLS.get('/4', createFolders, imgReview, (req, res) => {
   const { size } = req.query;
   if (size !== undefined && size !== 'original') {
     res.writeHead(200, { 'content-type': 'image/jpg' });
@@ -94,7 +96,7 @@ imgURLS.get('/4', imgReview, (req, res) => {
   }
 });
 
-imgURLS.get('/5', imgReview, (req, res) => {
+imgURLS.get('/5', createFolders, imgReview, (req, res) => {
   const { size } = req.query;
   if (size !== undefined && size !== 'original') {
     res.writeHead(200, { 'content-type': 'image/jpg' });
