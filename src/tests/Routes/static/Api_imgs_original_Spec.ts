@@ -1,7 +1,7 @@
 import supertest from 'supertest';
-import app from '../../index';
+import app from '../../../index';
 
-describe('Route api/img/ size original', () => {
+describe('Route api/img/ size original -> challenge 1', () => {
   it('get API /api/imgs/static/1 size', (done) => {
     supertest(app)
       .get('/api/imgs/static/1')

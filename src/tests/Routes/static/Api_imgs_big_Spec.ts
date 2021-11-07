@@ -1,64 +1,64 @@
 import supertest from 'supertest';
-import app from '../../index';
+import app from '../../../index';
 
-describe('Route api/img/ size medium', () => {
+describe('Route api/img/ size big -> challenge 1', () => {
   it('get API /api/imgs/static/1 size', (done) => {
     supertest(app)
-      .get('/api/imgs/static/1?size=medium')
+      .get('/api/imgs/static/1?size=big')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 110907 }, done);
+      .expect(200, { img: 227748 }, done);
   });
 
   it('get API /api/imgs/static/2 size', (done) => {
     supertest(app)
-      .get('/api/imgs/static/2?size=medium')
+      .get('/api/imgs/static/2?size=big')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 108519 }, done);
+      .expect(200, { img: 240063 }, done);
   });
 
   it('get API /api/imgs/static/3 size', (done) => {
     supertest(app)
-      .get('/api/imgs/static/3?size=medium')
+      .get('/api/imgs/static/3?size=big')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 64767 }, done);
+      .expect(200, { img: 143807 }, done);
   });
 
   it('get API /api/imgs/static/4 size', (done) => {
     supertest(app)
-      .get('/api/imgs/static/4?size=medium')
+      .get('/api/imgs/static/4?size=big')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 167287 }, done);
+      .expect(200, { img: 312910 }, done);
   });
 
   it('get API /api/imgs/static/5 size', (done) => {
     supertest(app)
-      .get('/api/imgs/static/5?size=medium')
+      .get('/api/imgs/static/5?size=big')
       .set('Accept', 'image/jpg')
       .expect((response) => {
         const imgValue: number = response.body.length;
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 67861 }, done);
+      .expect(200, { img: 160797 }, done);
   });
 });
