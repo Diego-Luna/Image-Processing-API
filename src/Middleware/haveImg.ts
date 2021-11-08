@@ -14,7 +14,15 @@ const imgReview = (
 ): void => {
   const url: string = req.url;
 
-  if (req.query.filename && req.query.width && req.query.height) {
+  if (
+    req.query.filename &&
+    req.query.width &&
+    Number(req.query.width) &&
+    Number.isInteger(Number(req.query.width)) &&
+    req.query.height &&
+    Number(req.query.height) &&
+    Number.isInteger(Number(req.query.height))
+  ) {
     const { filename, width, height } = req.query;
 
     const filenameString = String(filename);
