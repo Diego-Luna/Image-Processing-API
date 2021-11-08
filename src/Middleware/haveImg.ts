@@ -14,6 +14,7 @@ const imgReview = (
 ): void => {
   const url: string = req.url;
 
+  // It is valid that "req.query.width" and "req.query.height" is an integer
   if (
     req.query.filename &&
     req.query.width &&

@@ -1,8 +1,7 @@
 import express from 'express';
 import haveImg from '../../Middleware/haveImg';
 import createFolders from '../../Middleware/createFolders';
-import sharp from 'sharp';
-import fs from 'fs';
+import imageProcessing from '../../utils/imageProcessing';
 
 const imgURLS = express.Router();
 
@@ -14,21 +13,11 @@ imgURLS.get('/', createFolders, haveImg, (req, res) => {
   const urlEnd: string = pahtEnd + filename + '.jpg';
   const urlStart: string = pahtStart + filename + '/img.jpg';
 
-  const url: string = req.url;
-
   const heightNumber = Number(height);
   const widthNumber = Number(width);
 
-  sharp(urlStart)
-    .resize(widthNumber, heightNumber)
-    .toFile(urlEnd, function (err) {
-      if (err) {
-        res.status(400).send('wrong syntax: ' + url);
-      } else {
-        res.writeHead(200, { 'content-type': 'image/jpg' });
-        fs.createReadStream(urlEnd).pipe(res);
-      }
-    });
+  // factor out the image processing
+  imageProcessing(urlStart, urlEnd, widthNumber, heightNumber, res);
 });
 
 export default imgURLS;
