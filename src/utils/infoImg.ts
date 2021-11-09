@@ -7,17 +7,8 @@ interface imgSize {
 }
 
 // factor out the image processing
-async function imageProcessing(
-  urlStart: string,
-  urlEnd: string,
-  widthNumber: number,
-  heightNumber: number
-): Promise<imgSize | undefined> {
+async function imageProcessing(urlEnd: string): Promise<imgSize | undefined> {
   try {
-    const image = sharp(urlStart);
-
-    await image.resize(widthNumber, heightNumber).toFile(urlEnd);
-
     const { width, height } = await sharp(urlEnd).metadata();
 
     const imgHeightNumber = Number(height);

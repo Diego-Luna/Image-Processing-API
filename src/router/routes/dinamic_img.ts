@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import haveImg from '../../Middleware/haveImg';
 import createFolders from '../../Middleware/createFolders';
 import imageProcessing from '../../utils/imageProcessing';
+import fs from 'fs';
 
 const imgURLS = express.Router();
 
@@ -13,7 +14,7 @@ imgURLS.get(
   '/',
   createFolders,
   haveImg,
-  (req: Request, res: Response): void => {
+  async (req: Request, res: Response): Promise<void> => {
     const { filename, width, height } = req.query;
     // widht _ height _ filname
     const urlEnd: string =
@@ -27,7 +28,18 @@ imgURLS.get(
     const widthNumber = Number(width);
 
     // factor out the image processing
-    imageProcessing(urlStart, urlEnd, widthNumber, heightNumber, res);
+    const img = await imageProcessing(
+      urlStart,
+      urlEnd,
+      widthNumber,
+      heightNumber
+    );
+    if (img) {
+      res.writeHead(200, { 'content-type': 'image/jpg' });
+      fs.createReadStream(urlEnd).pipe(res);
+    } else {
+      res.status(400).send('wrong syntax ');
+    }
   }
 );
 
