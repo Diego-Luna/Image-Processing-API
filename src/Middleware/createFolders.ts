@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import express from 'express';
 import request from 'request';
-
+import createDir from '../utils/createDir';
 import fs from 'fs';
 
 const imgs_prosesing = 'img_folders/imgs_prosesing';
@@ -17,25 +17,29 @@ const imgsURLS: string[] = [
   'https://raw.githubusercontent.com/udacity/nd-0067-c1-building-a-server-project-starter/master/images/santamonica.jpg'
 ];
 
-const createFolders = (
+const createFolders = async (
   req: express.Request,
   res: express.Response,
   next: Function
-): void => {
+): Promise<void> => {
   if (fs.existsSync(imgs_prosesing) || fs.existsSync(imgs)) {
     next();
   } else {
     if (!fs.existsSync(imgs_prosesing)) {
-      fs.mkdirSync(imgs_prosesing);
+      try {
+        const createDir_0 = await createDir(imgs_prosesing, res);
+      } catch (error) {
+        res.status(500).send('Error downloading images, try another time');
+      }
     }
     if (!fs.existsSync(imgs)) {
       try {
-        fs.mkdirSync(imgs);
-        fs.mkdirSync(imgs + '/1');
-        fs.mkdirSync(imgs + '/2');
-        fs.mkdirSync(imgs + '/3');
-        fs.mkdirSync(imgs + '/4');
-        fs.mkdirSync(imgs + '/5');
+        const createDir_1 = await createDir(imgs, res);
+        const createDir_2 = await createDir(imgs + '/1', res);
+        const createDir_3 = await createDir(imgs + '/2', res);
+        const createDir_4 = await createDir(imgs + '/3', res);
+        const createDir_5 = await createDir(imgs + '/4', res);
+        const createDir_6 = await createDir(imgs + '/5', res);
 
         for (let i = 0; i <= imgsURLS.length; i++) {
           const iNumber: number = i + 1;
@@ -45,6 +49,7 @@ const createFolders = (
               .on('close', () => {});
           });
         }
+
         next();
       } catch (error) {
         res.status(500).send('Error downloading images, try another time');
