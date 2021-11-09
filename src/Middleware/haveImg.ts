@@ -7,7 +7,7 @@ const fsPromises = require('fs').promises;
 
 const paht = 'img_folders/imgs_prosesing/';
 
-const imgReview = (
+const haveImg = (
   req: express.Request,
   res: express.Response,
   next: Function
@@ -28,7 +28,7 @@ const imgReview = (
 
     const filenameString = String(filename);
 
-    const dinamicUrl: string = paht + filenameString + '.jpg';
+    // const dinamicUrl: string = paht + filenameString + '.jpg';
 
     if (
       filenameString === '1' ||
@@ -37,6 +37,17 @@ const imgReview = (
       filenameString === '4' ||
       filenameString === '5'
     ) {
+      const dinamicUrl: string =
+        paht +
+        'w:' +
+        width +
+        '_' +
+        'h:' +
+        height +
+        '_' +
+        filenameString +
+        '.jpg';
+
       if (fs.existsSync(dinamicUrl)) {
         const image = sharp(dinamicUrl);
         image
@@ -78,4 +89,4 @@ const imgReview = (
   }
 };
 
-export default imgReview;
+export default haveImg;

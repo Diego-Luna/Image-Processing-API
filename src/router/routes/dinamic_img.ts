@@ -15,8 +15,13 @@ imgURLS.get(
   haveImg,
   (req: Request, res: Response): void => {
     const { filename, width, height } = req.query;
-    const urlEnd: string = pahtEnd + filename + '.jpg';
+    // widht _ height _ filname
+    const urlEnd: string =
+      pahtEnd + 'w:' + width + '_' + 'h:' + height + '_' + filename + '.jpg';
     const urlStart: string = pahtStart + filename + '/img.jpg';
+
+    // eslint-disable-next-line no-console
+    console.log('----> processing image: ' + urlEnd);
 
     const heightNumber = Number(height);
     const widthNumber = Number(width);
