@@ -11,7 +11,7 @@ describe('Route api/img/ size big -> challenge 1', () => {
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 227748 }, done);
+      .expect(200, { img: 237142 }, done);
   });
 
   it('get API /api/imgs/static/2 size', (done) => {
@@ -23,7 +23,7 @@ describe('Route api/img/ size big -> challenge 1', () => {
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 240063 }, done);
+      .expect(200, { img: 250947 }, done);
   });
 
   it('get API /api/imgs/static/3 size', (done) => {
@@ -35,7 +35,7 @@ describe('Route api/img/ size big -> challenge 1', () => {
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 143807 }, done);
+      .expect(200, { img: 151359 }, done);
   });
 
   it('get API /api/imgs/static/4 size', (done) => {
@@ -47,7 +47,7 @@ describe('Route api/img/ size big -> challenge 1', () => {
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 312910 }, done);
+      .expect(200, { img: 324786 }, done);
   });
 
   it('get API /api/imgs/static/5 size', (done) => {
@@ -59,6 +59,6 @@ describe('Route api/img/ size big -> challenge 1', () => {
         response.body = {};
         response.body.img = imgValue;
       }, done)
-      .expect(200, { img: 160797 }, done);
+      .expect(200, { img: 166183 }, done);
   });
 });
